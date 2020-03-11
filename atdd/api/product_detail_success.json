@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "d70d0dbd-c64c-4947-b66f-39794cf93726",
+		"name": "shopping_cart_success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Product Detail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0d64b02-b767-43ce-857b-66be1b790f53",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Product Name Is 43 Piece Dinner Set\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.product_name).to.eql(\"43 Piece Dinner Set\");",
+							"});",
+							"",
+							"pm.test(\"Product Price Is 10.00\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.produt_price).to.eql(10.00);",
+							"});",
+							"",
+							"pm.test(\"Product Quantity Is 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.product_quantify).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Product Brand Is Coolkidz\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.product_brand).to.eql(\"CoolKidz\");",
+							"});",
+							"",
+							"pm.test(\"Product Image Is 43-piece-dinner-set.png\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.product_image).to.eql(\"/43-piece-dinner-set.png\");",
+							"}); ",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product/:1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":1"
+					],
+					"variable": [
+						{
+							"key": "1",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
