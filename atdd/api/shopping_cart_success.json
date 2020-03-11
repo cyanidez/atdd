@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "d70d0dbd-c64c-4947-b66f-39794cf93726",
+		"name": "shopping_cart_success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8b68a798-0a7e-4b81-a771-cada318eb67c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Total is 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.total).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Product Id is 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.products[0].id).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Product Name is 43 piece Dinner set\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.products[0].product_name).to.eql(\"43 Piece Dinner Set\");",
+							"});",
+							"",
+							"pm.test(\"Product Price is 10.00\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.products[0].product_price).to.eql(10.00);",
+							"});",
+							"",
+							"pm.test(\"Product Image is 43-piece-dinner-set.png\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.products[0].product_image).to.eql(\"/43-piece-dinner-set.png\");",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Product Detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Submit Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "/api/v1/product/:id",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Confirm Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "/api/v1/confirmPayment",
+					"path": [
+						"api",
+						"v1",
+						"confirmPayment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
